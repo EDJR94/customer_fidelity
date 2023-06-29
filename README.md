@@ -64,7 +64,7 @@ Para definir o melhor número de Clusters, utilizei 3 principais algoritmos de C
 - GaussianMixtureModel(GMM)
 - Hierarchical Clustering(HCluster)
 
-Para isso utilizei a métrica da Silhouette Score e a visualização em 2 dimensções da divisão feita pelo espaço da árvore para todos os modelos.
+Para isso utilizei a métrica da Silhouette Score e a visualização em 2 dimensões da divisão feita pelo espaço da árvore para todos os modelos.
 
 O melhor resultado foi obtido pelo HClustering:
 
