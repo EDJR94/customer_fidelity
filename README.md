@@ -1,4 +1,4 @@
-# Customer Fidelity Program - Clustering
+# Customer Loyalty Program - Clustering
 ![Captura de tela 2023-06-28 151640 (1)](https://github.com/EDJR94/customer_fidelity/assets/128603807/22d6cf06-90a9-4bf4-baa2-4aae7440395f)
 
 
