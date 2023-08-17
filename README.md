@@ -3,82 +3,82 @@
 
 
 
-**All in One** é uma empresa fictícia de comércio eletrônico com sede no Reino Unido. Ela oferece uma ampla gama de produtos voltados para diversas categorias, incluindo decoração de casa, suprimentos para festas, acessórios de cozinha, soluções de armazenamento e muito mais.
+ **All in One** is a fictional e-commerce company based in the United Kingdom. It offers a wide range of products across various categories, including home decor, party supplies, kitchen accessories, storage solutions, and more.
 
-## Problema de Negócio
+## Business Problem
 
-Após vender com sucesso uma ampla variedade de produtos e acumular uma base substancial de clientes, a All in One reconhece o imenso valor oculto em seus dados de clientes. A empresa tem como objetivo aproveitar o poder da ciência de dados para obter **insights mais profundos** sobre sua base de clientes e aplicar esses insights de forma estratégica. Um de seus principais objetivos é **segmentar seus clientes** de forma eficaz. Essa segmentação permitirá à All in One compreender sua base de clientes em um nível mais detalhado, identificar grupos de clientes específicos com necessidades e preferências distintas, e adaptar seus esforços de marketing e ofertas de produtos de acordo.
+After successfully selling a diverse array of products and amassing a substantial customer base, All in One recognizes the hidden value in its customer data. The company aims to harness the power of data science to gain **deeper insights** into its customer base and strategically apply these insights. One of its main objectives is to effectively **segment its customers**. This segmentation will enable All in One to understand its customer base at a more granular level, identify specific customer groups with distinct needs and preferences, and tailor its marketing efforts and product offerings accordingly.
 
-Além disso, ao implementar um **programa de fidelidade**, a All in One busca cultivar relacionamentos mais fortes com os clientes e aumentar a retenção deles. Por meio da análise cuidadosa dos comportamentos dos clientes, padrões de compra e preferências, eles podem projetar um programa de fidelidade que ofereça incentivos personalizados, recompensas e benefícios exclusivos para diferentes segmentos de clientes. Essa abordagem personalizada não apenas promove a fidelidade do cliente, mas também cria um senso de apreço e pertencimento entre os clientes, fortalecendo ainda mais sua conexão com a marca.
+Furthermore, by implementing a **loyalty program**, All in One seeks to foster stronger customer relationships and enhance customer retention. By carefully analyzing customer behaviors, purchasing patterns, and preferences, they can design a loyalty program that offers personalized incentives, rewards, and exclusive benefits to different customer segments. This personalized approach not only promotes customer loyalty but also fosters a sense of appreciation and belonging among customers, further strengthening their connection with the brand.
 
-## Dados
+## Data
 
 | Column Name | Description |
 | --- | --- |
-| InvoiceNo | Número da fatura, um identificador único para cada transação |
-| StockCode | Código do produto, um identificador único para cada produto |
-| Description | Descrição do produto |
-| Quantity | Quantidade de produtos comprados em cada transação |
-| InvoiceDate | Data e hora de cada transação |
-| UnitPrice | Preço unitário de cada produto |
-| CustomerID | ID do cliente, um identificador único para cada cliente |
-| Country | País do cliente |
+| InvoiceNo | Invoice number, a unique identifier for each transaction |
+| StockCode | Product code, a unique identifier for each product |
+| Description | Product description |
+| Quantity | Quantity of products purchased in each transaction |
+| InvoiceDate | Date and time of each transaction |
+| UnitPrice | Unit price of each product |
+| CustomerID | Customer ID, a unique identifier for each customer |
+| Country | Customer's country |
 
-## Estratégia de Solução
+## Solution Strategy
 
-A estratégia utilizada foi o método CRISP, um método cientifício baseado em ciclos:
+The strategy employed was the CRISP method, a scientific method based on cycles:
 
 ![crisp](https://github.com/EDJR94/customer_fidelity/assets/128603807/ed8ae3f7-11e3-4561-a662-69cdbceea6e9)
 
-Os ciclos do projeto foram dividas nas seguintes partes:
+The project cycles were divided into the following phases:
 
-- Entendimento do Problema
-- Descrição dos Dados
+- Problem Understanding
+- Data Description
 - Feature Engineering
-- Estudo dos espaços de Embedding
-- Definição dos Números de Clusters
-- Estudos dos Algoritmos de Machine Learning
-- Treinamento dos Modelos
-- Análise Exploratória dos Dados
-- Publicação em Nuvem
-- Business Perfomance
+- Embedding Space Study
+- Definition of Cluster Numbers
+- Machine Learning Algorithm Study
+- Model Training
+- Exploratory Data Analysis
+- Cloud Deployment
+- Business Performance
 
 ## Feature Engineering
 
-A seleção de features foi inspirada no modelo RFM e nas métricas de negócio geralmente utilizadas para uma empresa de negócio:
+Feature selection was inspired by the RFM model and commonly used business metrics for a business:
 
 ![RFM model](https://github.com/EDJR94/customer_fidelity/assets/128603807/d391a820-de8c-405d-bf05-fc17dbd28f76)
-Através dos dados fornecidos foram criadas as features do modelo RFM: Recency, Frenquency e Monetary. Ao todo foram criadas 14 feature que estão disponíveis no notebook na pasta notebooks.
+Based on the provided data, features of the RFM model were created: Recency, Frequency, and Monetary. In total, 14 features were created, which are available in the notebook in the notebooks folder.
 
-## Estudo do Espaço
+## Embedding Space Study
 
-Como o nosso dataset possui 15 colunas, procurei reduzir essa dimensionalidade para 2 dimensões utilizando algumas técnicas, como PCA, t-SNE, UMAP e redução de dimensionalidade por árvore utilizando a Random Forest. De acordo com o que mostrei no jupyter notebook, a redução que mais se mostrou separar mais os dados foi a baseada na árvore Random Forest:
+Since our dataset has 15 columns, I aimed to reduce this dimensionality to 2 dimensions using techniques such as PCA, t-SNE, UMAP, and dimensionality reduction by tree using Random Forest. According to what I showed in the Jupyter notebook, the reduction that showed the most separation of data was based on the Random Forest tree:
 
 ![Untitled](https://github.com/EDJR94/customer_fidelity/assets/128603807/8fd1701d-76d4-4dd1-bf9c-2c67314d4d39)
 
-## Definição do Número de Clusters
+## Definition of Cluster Numbers
 
-Para definir o melhor número de Clusters, utilizei 3 principais algoritmos de Clusterização:
+To define the optimal number of clusters, I used 3 main clustering algorithms:
 
 - KMeans
-- GaussianMixtureModel(GMM)
-- Hierarchical Clustering(HCluster)
+- GaussianMixtureModel (GMM)
+- Hierarchical Clustering (HCluster)
 
-Para isso utilizei a métrica da Silhouette Score e a visualização em 2 dimensões da divisão feita pelo espaço da árvore para todos os modelos.
+I used the Silhouette Score metric and a 2-dimensional visualization of the division made by the tree space for all models.
 
-O melhor resultado foi obtido pelo HClustering:
+The best result was obtained with HClustering:
 
 ![Untitled (1)](https://github.com/EDJR94/customer_fidelity/assets/128603807/316e2cb6-b84f-41e2-ad45-237069811bcf)
 
 ![Untitled (2)](https://github.com/EDJR94/customer_fidelity/assets/128603807/62f580f5-c985-4ea5-9b90-0fba1e18da46)
 
-Tinham valores de silhueta mais altos mas optei por utilizar 5 pois também tem um bom valor de silhueta e tem uma boa divisão dos dados como podemos ver acima.
+They had higher silhouette values, but I chose to use 5 clusters as it also has a good silhouette value and effectively divides the data, as shown above.
 
-## Resultado
+## Result
 
-Após o treinamento do HClustering com 5 clusters e calcular as métricas, chegamos no seguinte resultado:
+After training the HClustering with 5 clusters and calculating the metrics, we arrived at the following result:
 
-| Clusters | Monetary | Frequency | Recency | Percent | Qtd Products | Nº Products Returned | Relationship Duration | Nº Customers | AVG Order Value |
+| Clusters | Monetary | Frequency | Recency | Percent | Qty Products | No. Products Returned | Relationship Duration | No. Customers | AVG Order Value |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Insiders | 6599.350958 | 0.086662 | 44.127336 | 15.033368 | 300.517523 | 50.135514 | 246.336449 | 856 | 1149.044275 |
 | Potentials | 2119.202031 | 0.024631 | 101.500428 | 20.495258 | 152.898886 | 35.820908 | 122.052271 | 1167 | 927.101689 |
@@ -86,56 +86,55 @@ Após o treinamento do HClustering com 5 clusters e calcular as métricas, chega
 | Sleeping | 280.102519 | 0.016227 | 149.095310 | 23.217422 | 22.301059 | 2.193646 | 32.131619 | 1322 | 233.020635 |
 | Occasional | 93.049877 | 0.006202 | 187.118488 | 17.193537 | 9.247191 | 0.880490 | 0.391216 | 979 | 91.611593 |
 
-Podemos observar que os ‘Insiders’ sao clientes que comprar um valor alto, uma grande quantidade de produtos, com alta frequência e baixa recência.
+We can observe that 'Insiders' are customers who purchase high-value products, a large quantity of products, with high frequency and low recency.
 
-Os Clientes ‘Potentials’ são possíveis candidatos a se tornarem Insiders, porque eles compram bastante produtos as estão com a recência muito alta, ou seja, faz tempo desde sua última compra. 
+'Potentials' customers are potential candidates to become 'Insiders', as they purchase a considerable number of products but have a high recency, indicating it's been a while since their last purchase.
 
-Os clientes ‘At Risk’ são clientes que compram com uma frequência aceitável mas compram pouca quantidade de produtos. Se aumentarmos a quantidade de produtos comprados eles poderão ser candidados aos Insiders.
+'At Risk' customers are those who make acceptable-frequency purchases but buy a low quantity of products. By increasing the quantity of products they purchase, they could potentially become 'Insiders'.
 
-Os ‘Sleeping’ São clientes que compraram poucos produtos poucas vezes e não voltaram mais, sua duração da relação com a empresa durou em média apenas 32 dias. São clientes que devem ser incentivados a buscar a All in One mais vezes.
+'Sleeping' customers have made few purchases, rarely return, and their relationship with the company lasted on average only 32 days. They should be encouraged to make more frequent purchases.
 
-Por fim, os ‘Occasionals’ são clientes novos que compraram faz pouco tempo, devem ser incentivados a permanecerem na empresa.
+Finally, 'Occasionals' are new customers who recently made purchases and should be encouraged to stay engaged with the company.
 
-Além disso foi feito um Dashboard no Metabase conectado com a base de dados da AWS(RDS) em nuvem para atualizar as dados conforme forem entrando mais clientes:
+Additionally, a dashboard was created in Metabase connected to the AWS cloud-based RDS database to update the data as new customers are added:
 
 ![Untitled (3)](https://github.com/EDJR94/customer_fidelity/assets/128603807/42afda78-bfde-4c17-a26a-b039f307adb7)
 
-## Publicação em Nuvem
+## Cloud Deployment
 
-Após finalizar o projeto na minha máquina local criei um banco de dados na Amazon AWS para que os dados possam ser alimentados lá conforme forem entrando mais clientes novos. 
+After completing the project on my local machine, I set up a database on Amazon AWS to feed the data as new customers are added. I also utilized an AWS S3 bucket to store both the original and new data, as well as my trained model saved through the Pipeline.
 
-Também deixei um HD S3 da AWS para armazenar tanto os dados originais quantos os novos dados e o meu modelo treinado e salvo através do Pipeline. 
+This way, I can access my model and data through AWS, and Metabase is updated as I feed my Postgres database after passing the data through the trained model.
 
-Dessa forma, consigo buscar meu modelo e meus dados atráves da AWS e o Metabase é atualizado conforme eu for alimentando a minha base de dados Postgres após passar esses dados pelo modelo treinado.
-
-A estrutura do modelo em produção ficou conforme a figura abaixo:
+The production model structure is as depicted in the figure below:
 
 ![Untitled (4)](https://github.com/EDJR94/customer_fidelity/assets/128603807/f46820d4-e309-4356-a193-090df03f8d71)
 
-Segue abaixo a estrutura do meu Pipeline: 
+Here is the structure of my Pipeline:
 
 ![Untitled (5)](https://github.com/EDJR94/customer_fidelity/assets/128603807/71c32544-3c64-4d11-b5da-a7bd79653b34)
 
-Mais informações sobre o Pipeline podem ser encontradas na pasta pipeline_class.
+More information about the Pipeline can be found in the pipeline_class folder.
 
-## Performance do Negócio e Conclusão
+## Business Performance and Conclusion
 
-O faturamento da empresa All in One antes da clusterização é de: R$10.027.467,31
+The revenue of the All in One company before clustering is: $10,027,467.31
 
-Supondo que após a aplicação do programa de fidelidade a empresa consiga, por meio de campanhas de marketing e descontos especiais, aumentar em 20% o faturamento gerado pelos Insiders.
+Assuming that after implementing the loyalty program, the company can increase the revenue generated by 'Insiders' by 20% through marketing campaigns and special discounts.
 
-Também considerando que a empresa consiga uma taxa de conversão para o programa Insiders de 20% para os clientes ‘Potentials’, 10% para os clientes At Risk e 5% para os clientes ‘Sleeping’, haverá um aumento de 51% na quantidade de clientes pertencentes ao Insiders.
+Also, assuming the company achieves a conversion rate for the Insiders program of 20% for 'Potentials', 10% for 'At Risk', and 5% for 'Sleeping' customers, there will be a 51% increase in the number of 'Insiders'.
 
-Se concluirmos que os clientes convertidos seguirão o padrão de consumo dos Insiders, o faturamento total passará a ser de R$11.282.203,37. Isso representa um aumento de R$1.254.728,62 ou 12,51% a mais para a empresa All in One.
+If we assume that the converted customers follow the consumption pattern of 'Insiders', the total revenue will become $11,282,203.37. This represents an increase of $1,254,728.62 or 12.51% more for the All in One company.
 
-Mais detalhes sobre o cálculo podem ser encontrados no notebook ‘customer_fidelity_final_embedding’ na seção Business Performance.
+More details about the calculation can be found in the 'customer_fidelity_final_embedding' notebook in the Business Performance section.
 
-Portanto, podemos concluir que a implementação de um programa de fidelidade a partir de algoritmos de clusterização podem trazer resultados consideráveis para o valor da empresa. Além disso ao implementar técnicas de engajamento com os clientes a empresa ganha conhecimento de técnicas de marketing e alocação de recursos de forma mais eficiente
+Therefore, we can conclude that implementing a loyalty program based on clustering algorithms can bring considerable results to the company's value. Furthermore, by implementing customer engagement techniques, the company gains insights into marketing strategies and more efficient resource allocation.
 
-## Referências
+## References
 
-Autor: Edilson Santos, Cientista de Dados
+Author: Edilson Santos, Data Scientist
 
-Porfólio: https://edjr94.github.io/portfolio_projetos/
+Portfolio: [https://edjr94.github.io/portfolio_projetos/](https://edjr94.github.io/portfolio_projetos/)
 
-Linkedin: https://www.linkedin.com/in/edilsonsantosjr/
+LinkedIn: [https://www.linkedin.com/in/edilsonsantosjr/](https://www.linkedin.com/in/edilsonsantosjr/)
+
