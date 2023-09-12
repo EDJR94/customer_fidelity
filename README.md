@@ -50,6 +50,30 @@ Feature selection was inspired by the RFM model and commonly used business metri
 ![RFM model](https://github.com/EDJR94/customer_fidelity/assets/128603807/d391a820-de8c-405d-bf05-fc17dbd28f76)
 Based on the provided data, features of the RFM model were created: Recency, Frequency, and Monetary. In total, 14 features were created, which are available in the notebook in the notebooks folder.
 
+## Cohort Analysis
+I did a matrix to analyze cohort retention of customers overtime. First, a brief explanation of the cohort analysis matrix:
+
+![cohort](https://github.com/EDJR94/customer_fidelity/assets/128603807/a968a12c-d8fd-46b0-8575-01ada3d920fc)
+
+- Rows (Cohorts): Each row represents a group of customers who made their first purchase in the indicated month.
+- Columns: Represent the number of months since the first purchase.
+- Cells: Display the retention rate of each cohort over time.
+
+Based on this matrix, we can infer the following about customer retention:
+
+- First Month Retention: The first column after the cohort month always shows a 100% retention rate. This is expected since it's the month when the customer made their first purchase.
+
+- Retention Trends Over Time:
+
+1. For the November 2016 cohort, the retention in the second month is 35.68%, and it remains relatively stable in subsequent months. However, there's a spike in retention in the 12th month (45.72%).
+2. Subsequent cohorts (like December 2016 and January 2017) show a steeper drop in retention in the second month and a decreasing trend in the following months.
+More recent cohorts (for instance, from September 2017 onwards) don't have enough data to analyze long-term trends, but the retention in the initial months also shows a significant drop.
+
+- Overall Retention:
+
+In general, there seems to be a significant drop in retention after the first month for all cohorts.
+Some cohorts have occasional spikes in retention in specific months, but the general trend is downward.
+
 ## Embedding Space Study
 
 Since our dataset has 15 columns, I aimed to reduce this dimensionality to 2 dimensions using techniques such as PCA, t-SNE, UMAP, and dimensionality reduction by tree using Random Forest. According to what I showed in the Jupyter notebook, the reduction that showed the most separation of data was based on the Random Forest tree:
